@@ -3,6 +3,7 @@ import { FaPlus, FaFolder, FaChevronDown, FaChevronRight } from "react-icons/fa"
 
 const Sidebar = ({ projects, addProject }) => {
   console.log("Sidebar received projects:", projects);
+  console.log("Sidebar received addProject function:", addProject);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
@@ -25,9 +26,7 @@ const Sidebar = ({ projects, addProject }) => {
       return;
     }
 
-    // ✅ Make sure project is added to the list
-    addProject([...projects, newProject]); 
-
+    addProject(newProject);
     closeModal();
   };
 
@@ -60,12 +59,9 @@ const Sidebar = ({ projects, addProject }) => {
           <ul className="overflow-y-auto flex-1 pl-4">
             {projects.length > 0 ? (
               projects.map((project, index) => (
-                <li 
-                  key={index} 
-                  className="px-3 py-2 mb-1 rounded-lg cursor-pointer bg-purple-700 text-white hover:bg-indigo-700 hover:text-white transition"
-                >
+                <li key={index} className="px-3 py-2 mb-1 rounded-lg cursor-pointer text-gray-300 hover:bg-indigo-700 hover:text-white transition">
                   <strong>{project.title}</strong>
-                  <p className="text-sm text-gray-300">{project.description}</p>
+                  <p className="text-sm text-gray-400">{project.description}</p>
                 </li>
               ))
             ) : (
@@ -117,6 +113,7 @@ const Sidebar = ({ projects, addProject }) => {
 };
 
 export default Sidebar;
+
 
 
 

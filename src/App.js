@@ -8,17 +8,13 @@ const AppLayout = () => {
   const [projects, setProjects] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [showKnowMore, setShowKnowMore] = useState(false);
-  
-  const addProject = (newProject) => {
-    setProjects((prevProjects) => [...prevProjects, newProject]);
-  };
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <div className="flex flex-grow">
         {/* Sidebar */}
         <aside className="w-50 bg-gray-900 text-white p-4">
-          <Sidebar projects={projects} addProject={addProject} projectTextColor="text-white" />
+          <Sidebar projects={projects} />
         </aside>
 
         {/* Main Content */}
@@ -82,13 +78,84 @@ const AppLayout = () => {
               ℹ️ Know More
             </button>
           </motion.div>
+
+          {/* Smaller & Square-Shaped Login Popup (Centered) */}
+          {showLogin && (
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white p-6 rounded-lg shadow-xl w-64 h-64 flex flex-col items-center justify-center relative"
+              >
+                <button
+                  onClick={() => setShowLogin(false)}
+                  className="absolute top-2 right-3 text-gray-700 hover:text-gray-900 text-lg"
+                >
+                  ✖
+                </button>
+
+                <h2 className="text-lg font-semibold text-indigo-600 mt-2">🔑 Login</h2>
+                <p className="text-gray-600 text-sm mb-4">Access your dashboard</p>
+                <LoginBox />
+              </motion.div>
+            </div>
+          )}
+
+          {/* Know More Popup */}
+          {showKnowMore && (
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white p-6 rounded-xl shadow-2xl w-96 h-auto flex flex-col items-center relative"
+              >
+                <button
+                  onClick={() => setShowKnowMore(false)}
+                  className="absolute top-2 right-3 text-gray-700 hover:text-gray-900 text-xl"
+                >
+                  ✖
+                </button>
+
+                <h2 className="text-xl font-bold text-indigo-700">🔍 About Proma</h2>
+                <p className="text-gray-600 mt-2 text-center">
+                  Proma is a powerful project management tool designed to help you organize your work efficiently. 
+                  Stay on top of your projects, collaborate with your team, and get things done faster.
+                </p>
+                <ul className="list-disc text-gray-700 mt-3 text-left px-6">
+                  <li>✔️ Create & manage projects</li>
+                  <li>✔️ Track progress & deadlines</li>
+                  <li>✔️ Collaborate with team members</li>
+                </ul>
+              </motion.div>
+            </div>
+          )}
         </main>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-gradient-to-r from-indigo-900 to-purple-900 text-gray-200 py-6 w-full text-center shadow-lg mt-10">
+        <p className="text-md font-semibold tracking-wide">📞 Contact Us</p>
+        <a href="mailto:support@example.com" className="text-red hover:text-yellow-400 transition">
+          📧 support@example.com
+        </a>
+        <p className="text-sm mt-2 font-semibold">Follow Us:</p>
+        <div className="flex justify-center space-x-3 mt-1">
+          <a href="https://www.linkedin.com" className="hover:text-yellow">🔗 LinkedIn</a>
+          <a href="https://www.facebook.com" className="hover:text-yellow">📘 Facebook</a>
+          <a href="https://twitter.com" className="hover:text-yellow">🐦 Twitter</a>
+        </div>
+      </footer>
     </div>
   );
 };
 
 export default AppLayout;
+
+
+
+
 
 
 
