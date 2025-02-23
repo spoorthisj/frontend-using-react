@@ -1,4 +1,99 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Apply the Roboto font globally */
+body {
+  font-family: 'Roboto', sans-serif;
+  @apply bg-gray-100 text-gray-900;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  @apply w-64 bg-gray-900 text-white min-h-screen p-4 transition-all;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  @apply flex items-center justify-between mb-4 text-lg font-semibold;
+}
+
+/* Sidebar Project List */
+.sidebar ul {
+  @apply border-r border-gray-500 pr-2;
+}
+
+/* Sidebar List Items */
+.sidebar ul li {
+  @apply px-5 py-2 text-gray-300 text-sm capitalize select-none rounded-lg transition-all;
+}
+
+.sidebar ul li:hover {
+  @apply bg-gray-700 text-white;
+}
+
+/* Active Project */
+.sidebar ul li.active {
+  @apply bg-indigo-500 text-white font-medium;
+}
+
+/* Scrollbar Customization */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  @apply bg-gray-600 rounded-lg;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  @apply bg-gray-800;
+}
+
+/* Button Styling */
+.add-project-btn {
+  @apply bg-indigo-500 hover:bg-indigo-600 text-white rounded-full p-2 focus:outline-none focus:ring focus:ring-indigo-400;
+}
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+  }
+  
+  .login-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+  }
+  
+  .login-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login-box button {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-box p {
+    color: #007bff;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
